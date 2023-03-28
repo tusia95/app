@@ -13,6 +13,10 @@ class Book
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Name]
+    #[ORM\Column]
+    private ?string $name = null;
+
     #[ORM\ManyToOne(inversedBy: 'books')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
@@ -22,6 +26,18 @@ class Book
         return $this->id;
     }
 
+    public function getName(): ?Name
+    {
+        return $this->name;
+    }
+
+    public function setName(?Name $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -29,7 +45,7 @@ class Book
 
     public function setCategory(?Category $category): self
     {
-        $this->catgory = $category;
+        $this->category = $category;
 
         return $this;
     }
